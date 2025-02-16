@@ -211,7 +211,7 @@ input::-ms-input-placeholder {
 }
 .close-icon {
 	text-align: center;
-	min-width: 25px;
+	min-width: 55px;
 	cursor: pointer;
 	display: block;
 	line-height: initial;
@@ -1490,11 +1490,11 @@ object {
 	color:#2E303C;
 }
 .nftmax-btn.nftmax-btn__bordered.bg {
-	background: linear-gradient(134.38deg,#f539f8,#c342f9 43.55%,#5356fb 104.51%);
+	background: linear-gradient(134.38deg,#f86c39,#ffb20d 43.55%,#ecd90d 104.51%);
 	color: #fff;
 }
 .nftmax-btn.nftmax-btn__bordered.bg:hover{
-	background:linear-gradient(134.38deg,#5356fb,#c342f9 43.55%,#f539f8 104.51%)
+	background:linear-gradient(134.38deg,#f07408,#f3d40c 43.55%,#d4d709 104.51%)
 }
 .nftmax-btn.radius{
 	border-radius:50px;

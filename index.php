@@ -1,14 +1,23 @@
 <?php
-require_once("class/HL/products.php");
-echo ("<h1>Productos del Ecomerce</h1>");
+require_once("class/app/views/header_template.php");
 
-$productos = new Products();
-$pro = $productos->list();
+?>
 
-foreach ($pro as $product) {
-    print_r(json_decode(json_encode($product, true))->id);
-    print_r(json_decode(json_encode($product, true))->sku);
-    print_r(json_decode(json_encode($product, true))->id);
-    print_r(json_decode(json_encode($product, true))->description);
-    print_r(json_decode(json_encode($product, true))->slug);
-}
+<div class="body-bg" style="background-image:url('img/body-bg.jpg')">
+
+    <!-- NFTMax Admin Menu -->
+    <?php require_once("class/app/views/main_menu.php"); ?>
+    <!-- End NFTMax Admin Menu -->
+    <section class="nftmax-adashboard nftmax-show">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-9 col-12 nftmax-main__column">
+                    <div class="nftmax-body">
+                        <div class="nftmax-dsinner">
+
+                        </div>
+
+
+                    </div>
+                    <?php
+                    require_once("class/app/views/footer_template.php");
