@@ -1,6 +1,6 @@
 <?php
 require_once("conection_gc.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/class/HL/orders.php");
+require_once($_SERVER['SERVER_NAME'] . "/class/HL/orders.php");
 class RequisasGC extends ApiClient
 {
     public function __construct()
