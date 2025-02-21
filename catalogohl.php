@@ -5,7 +5,8 @@ require_once("class/HL/products.php");
 $apiClient = new ProductsHL();
 
 $prod = new ProductsHL();
-$hldata = json_encode($prod->list());
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$hldata = json_encode($prod->list($page));
 
 
 ?>
@@ -52,7 +53,8 @@ $hldata = json_encode($prod->list());
                                     <div class="tab-pane fade show active" id="table_1" role="tabpanel"
                                         aria-labelledby="table_1">
                                         <!-- NFTMax Table -->
-                                        <table id="nftmax-table__main" class="nftmax-table__main nftmax-table__main-v1">
+                                        <table id="nftmax-table__mainhl"
+                                            class="nftmax-table__main nftmax-table__main-v1">
                                             <!-- NFTMax Table Head -->
                                             <thead class="nftmax-table__head">
                                                 <tr>
@@ -61,10 +63,10 @@ $hldata = json_encode($prod->list());
                                                     <th class="nftmax-table__column-1 nftmax-table__h2">SKU
                                                     </th>
                                                     <th class="nftmax-table__column-2 nftmax-table__h4">Producto</th>
-                                                    <th class="nftmax-table__column-2 nftmax-table__h5">precio</th>
+                                                    <th class="nftmax-table__column-2 nftmax-table__h5">Precio</th>
                                                     <th class="nftmax-table__column-2 nftmax-table__h6">Stock</th>
 
-                                                    <th class="nftmax-table__column-6 nftmax-table__h7">Actualizado</th>
+                                                    <th class="nftmax-table__column-6 nftmax-table__h7">ID GC</th>
                                                     <th class="nftmax-table__column-7 nftmax-table__h8">Estado </th>
                                                 </tr>
                                             </thead>
@@ -73,8 +75,17 @@ $hldata = json_encode($prod->list());
                                                 <?php
                                                 $datajson = json_decode($hldata);
                                                 foreach ($datajson as $productscatalgo => $productdetails) {
+                                                    $idGC = '--';
+                                                    foreach ($productdetails->attributes as $attribute) {
+
+                                                        if ($attribute->name == "idGc") {
+
+                                                            $idGC = $attribute->options[0];
+                                                            break;
+                                                        }
+                                                    }
                                                     //$prodremote = json_decode($apiClient->getProduct($productdetails->id));
-                                                    //echo "<pre>";
+                                                    // echo "<pre>";
                                                     // var_dump($productdetails);
                                                     // echo "</pre>";
 
@@ -130,8 +141,8 @@ $hldata = json_encode($prod->list());
                                                         </td>
 
                                                         <td class="nftmax-table__column-6 nftmax-table__data-5">
-                                                            <p class="nftmax-table__text nftmax-table__time">2 Hours 1 min
-                                                                30s</p>
+                                                            <p class="nftmax-table__text nftmax-table__time">
+                                                                <?php echo $idGC; ?></p>
                                                         </td>
                                                         <td class="nftmax-table__column-7 nftmax-table__data-7">
                                                             <div class="nftmax-table__status nftmax-sbcolor sync"
@@ -147,6 +158,19 @@ $hldata = json_encode($prod->list());
                                             </tbody>
                                             <!-- End NFTMax Table Body -->
                                         </table>
+                                        <div class="text-center mt-4">
+                                            <form method="get" action="" style="display: inline-block;">
+                                                <input type="hidden" name="page"
+                                                    value="<?php echo isset($_GET['page']) ? $_GET['page'] + 1 : 2; ?>">
+                                                <button type="submit" class="btn btn-primary">Cargar más</button>
+                                            </form>
+                                            <?php if (isset($_GET['page'])) { ?>
+                                                <form method="get" action=""
+                                                    style="display: inline-block; margin-left: 10px;">
+                                                    <button type="submit" class="btn btn-secondary">Reiniciar</button>
+                                                </form>
+                                            <?php } ?>
+                                        </div>
                                         <!-- End NFTMax Table -->
                                     </div>
 

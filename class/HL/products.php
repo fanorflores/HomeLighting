@@ -32,10 +32,10 @@ class ProductsHL
         // print_r($woocommerce->post('products', $data));
     }
 
-    public function list()
+    public function list($page)
     {
         $con = new Conection("v3");
-        return $con->getWoocommerce()->get('products');
+        return $con->getWoocommerce()->get('products?per_page=100&page=' . $page);
         //woocommerce->get('products')
     }
     public function update()
@@ -64,6 +64,13 @@ class ProductsHL
             ]
         ];  // print_r($woocommerce->post('products', $data));
     }
+    public function getbysku($sku)
+    {
+        $con = new Conection("v3");
+        return $con->getWoocommerce()->get("products?sku=" .  $sku);
+    }
+
+
 
     public function customfield()
     {
@@ -79,20 +86,51 @@ class ProductsHL
         return 0;
     }
 
-    public function LoadLocal()
+    public function saveLocal($productdetails)
     {
         $prodLocal = new ProductsLocal();
-        $prodHL = new ProductsHL();
-        $products = json_encode($prodHL->list());
-        $datajson = json_decode($products);
-        foreach ($datajson as $productdetails) {
 
-            $idGcP = $productdetails->id;
-            $skuHL = $productdetails->sku;
-            $productsStockHL = $productdetails->stock_quantity;
-            echo ($prodLocal->insertProduct($idGcP, $skuHL, $productsStockHL, $products));
+
+        $idGcP = $productdetails->idGc;
+        $idHL = $productdetails->idHl;
+        $sku = $productdetails->sku;
+        $productsStockHL = $productdetails->stock_quantity;
+        $datahl = $productdetails->datahl;
+
+        return $prodLocal->insertProduct($idGcP, $idHL, $sku, $productsStockHL, $datahl);
+    }
+
+    public function updateAttributeIdGc($productId, $newIdGc)
+    {
+        $con = new Conection("v3");
+
+        // ID del producto a actualizar
+
+
+        // Datos para actualizar el atributo personalizado
+        $data = [
+            'attributes' => [
+                [
+                    'id'      => 2,       // ID del atributo personalizado
+                    'name'      => 'idGc',   // Nombre del atributo
+                    'slug'      => 'pa_idgc', // WooCommerce requiere "pa_" para atributos globales
+                    'position'  => 1,
+                    'visible'   => false,   // NO será visible en la tienda
+                    'variation' => false,   // No es un atributo de variación
+                    'options'   => ['' . $newIdGc] // Valor del atributo
+                ]
+            ]
+        ];
+
+        // Actualizar el producto con el nuevo atributo
+        try {
+            $updated_product = $con->getWoocommerce()->put("products/$productId", $data);
+            echo "<pre>";
+            echo "Producto actualizado con idGc: " . print_r($updated_product, true);
+            echo "</pre>";
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
         }
-        return 0;
     }
 }
 /*

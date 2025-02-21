@@ -33,7 +33,25 @@
                                         </path>
                                     </svg></span><span class="menu-bar__name">Dashboard</span></span></a>
                     </li>
-                    <li class="active">
+                    <li class="inactive">
+                        <a href="carritos.php"><span class="menu-bar__text"><span
+                                    class="nftmax-menu-icon nftmax-svg-icon__v1"><svg class="nftmax-svg-icon"
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0.800781 2.60005V7.40005H7.40078V0.800049H2.60078C2.12339 0.800049 1.66555 0.989691 1.32799 1.32726C0.990424 1.66482 0.800781 2.12266 0.800781 2.60005H0.800781Z">
+                                        </path>
+                                        <path
+                                            d="M13.4016 0.800049H8.60156V7.40005H15.2016V2.60005C15.2016 2.12266 15.0119 1.66482 14.6744 1.32726C14.3368 0.989691 13.879 0.800049 13.4016 0.800049V0.800049Z">
+                                        </path>
+                                        <path
+                                            d="M0.800781 13.4001C0.800781 13.8775 0.990424 14.3353 1.32799 14.6729C1.66555 15.0105 2.12339 15.2001 2.60078 15.2001H7.40078V8.6001H0.800781V13.4001Z">
+                                        </path>
+                                        <path
+                                            d="M8.60156 15.2001H13.4016C13.879 15.2001 14.3368 15.0105 14.6744 14.6729C15.0119 14.3353 15.2016 13.8775 15.2016 13.4001V8.6001H8.60156V15.2001Z">
+                                        </path>
+                                    </svg></span><span class="menu-bar__name">Carritos</span></span></a>
+                    </li>
+                    <li class="inactive">
                         <a href="requisas.php"><span class="menu-bar__text"><span
                                     class="nftmax-menu-icon nftmax-svg-icon__v1"><svg class="nftmax-svg-icon"
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
@@ -49,7 +67,7 @@
                                         <path
                                             d="M8.60156 15.2001H13.4016C13.879 15.2001 14.3368 15.0105 14.6744 14.6729C15.0119 14.3353 15.2016 13.8775 15.2016 13.4001V8.6001H8.60156V15.2001Z">
                                         </path>
-                                    </svg></span><span class="menu-bar__name">Requisas activas</span></span></a>
+                                    </svg></span><span class="menu-bar__name">Requisas</span></span></a>
                     </li>
 
                     <li class="">
@@ -107,20 +125,14 @@
         </div>
 
         <div class="admin-menu__two mg-top-50">
-            <h4 class="admin-menu__title nftmax-scolor">Settings</h4>
+            <h4 class="admin-menu__title nftmax-scolor">Ajustes Store</h4>
             <!-- Nav Menu -->
             <div class="menu-bar">
                 <ul class="menu-bar__one">
-                    <li><a href="profile.html"><span class="menu-bar__text"><span
+                    <li><a href="cloudidupdate.php"><span class="menu-bar__text"><span
                                     class="nftmax-menu-icon nftmax-svg-icon__v10">
-                                    <svg class="nftmax-svg-icon" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M10.8692 11.6667H4.13085C3.03569 11.668 1.98576 12.1036 1.21136 12.878C0.436961 13.6524 0.00132319 14.7023 0 15.7975V20H15.0001V15.7975C14.9987 14.7023 14.5631 13.6524 13.7887 12.878C13.0143 12.1036 11.9644 11.668 10.8692 11.6667Z">
-                                        </path>
-                                        <path
-                                            d="M7.49953 10C10.261 10 12.4995 7.76145 12.4995 5.00002C12.4995 2.23858 10.261 0 7.49953 0C4.7381 0 2.49951 2.23858 2.49951 5.00002C2.49951 7.76145 4.7381 10 7.49953 10Z">
-                                        </path>
-                                    </svg></span><span class="menu-bar__name">My Profile</span> </span></a></li>
+                                    <img src="img/profile-4.png" alt="" srcset="">
+                                </span><span class="menu-bar__name">Sincronizar ID GC</span> </span></a></li>
 
                 </ul>
             </div>
@@ -153,19 +165,21 @@
                             <!-- Search Form -->
                             <div class="nftmax-header__amount">
                                 <div class="nftmax-amount__icon"><i class="fa-solid fa-database"></i></div>
-                                <div class="nftmax-amount__digit">Sincronizar</div>
+                                <div class="nftmax-amount__digit">Local</div>
                                 <div class="nftmax-header__plus"><i class="fa-sharp fa-solid fa-rotate"></i>
                                 </div>
                                 <!-- NFTMax Balance Hover -->
                                 <div class="nftmax-balance">
-                                    <h3 class="nftmax-balance__title">Bases de datos</h3>
+                                    <h3 class="nftmax-balance__title">Base de Datos Local</h3>
                                     <!-- NFTMax Balance List -->
                                     <ul class="nftmax-balance_list">
                                         <li>
                                             <div class="nftmax-balance-info">
                                                 <div class="nftmax-balance__img"><i class="fa-solid fa-lightbulb"></i>
                                                 </div>
-                                                <h4 class="nftmax-balance-name">Home Ligthning</h4>
+                                                <h4 class="nftmax-balance-name">
+                                                    <a href="synclocalhl.php">Home Ligthning</a>
+                                                </h4>
                                             </div>
                                             <div class="nftmax-balance-amount">
                                                 <h4 class="nftmax-balance-amount nftmax-scolor">1289<span
@@ -246,7 +260,7 @@
                                                             <img src="img/profile-4.png" alt="#">
                                                         </div>
                                                         <h4 class="nftmax-balance-name"><a
-                                                                href="settings.html">Setting</a></h4>
+                                                                href="settings.html">Ajustes</a></h4>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -254,8 +268,8 @@
                                                         <div class="nftmax-balance__img nftmax-profile__img-five">
                                                             <img src="img/profile-5.png" alt="#">
                                                         </div>
-                                                        <h4 class="nftmax-balance-name"><a href="profile.html">Log
-                                                                Out</a></h4>
+                                                        <h4 class="nftmax-balance-name"><a
+                                                                href="updatehl.html">Actualizar HL Store</a></h4>
                                                     </div>
                                                 </li>
                                             </ul>

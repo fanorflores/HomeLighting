@@ -10,16 +10,18 @@ class ProductsLocal extends HLSynchlcubasSyncAPI
         parent::__construct();
     }
 
-    public function insertProduct($idGcP, $skuHL, $productsStockHL, $productHLData)
+    public function insertProduct($idGc, $idHL, $sku, $productsStockHL, $productHLData)
     {
-        $productLastUpdateHL = date('Y-m-d H:i:s');
-        $prodHLUpdate = null;
 
-        $sql = "INSERT INTO $this->table (idGcP, skuHL, productsStockHL, productLastUpdateHL, productHLData, prodHLUpdate) 
+        //INSERT INTO `hlcubassyncapi`.`homelightingproducts` (`idGcP`, `skuHL`, `sku`, `productsStockHL`, `productLastUpdateHL`, `productHLData`) VALUES ('341', '3443', 'dfgd454', '334', 'er454', '4545');
+
+        $productLastUpdateHL = date('Y-m-d H:i:s');
+
+        $sql = "INSERT INTO $this->table (idGcP, idHL, sku, productsStockHL, productLastUpdateHL, productHLData) 
                 VALUES (?, ?, ?, ?, ?, ?)";
 
         $stmt = parent::getConnection()->prepare($sql);
-        $stmt->bind_param('isisss', $idGcP, $skuHL, $productsStockHL, $productLastUpdateHL, $productHLData, $prodHLUpdate);
+        $stmt->bind_param('isssss', $idGc, $idHL, $sku, $productsStockHL, $productLastUpdateHL, $productHLData);
 
         if ($stmt->execute()) {
             return parent::getLastId($this->table, 'idHomeLightingProducts');
@@ -48,6 +50,21 @@ class ProductsLocal extends HLSynchlcubasSyncAPI
         } else {
             return false;
         }
+    }
+
+    public function getAllProducts()
+    {
+        $sql = "SELECT * FROM $this->table";
+        $stmt = parent::getConnection()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $products = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $products[] = $row;
+        }
+
+        return json_encode($products);
     }
 }
 /*

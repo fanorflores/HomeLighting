@@ -62,12 +62,12 @@ if ($apiClient->login()) {
                                                     </th>
                                                     <th class="nftmax-table__column-1 nftmax-table__h2">SKU
                                                     </th>
-                                                    <th class="nftmax-table__column-1 nftmax-table__h3">Productos
+                                                    <th class="nftmax-table__column-1 nftmax-table__h3">Marca
                                                     </th>
-                                                    <th class="nftmax-table__column-2 nftmax-table__h4">precio</th>
+                                                    <th class="nftmax-table__column-2 nftmax-table__h4">Precio</th>
                                                     <th class="nftmax-table__column-2 nftmax-table__h5">Stock</th>
 
-                                                    <th class="nftmax-table__column-6 nftmax-table__h6">Actualizado</th>
+                                                    <th class="nftmax-table__column-6 nftmax-table__h6">idGc</th>
                                                     <th class="nftmax-table__column-7 nftmax-table__h7">Estado </th>
                                                 </tr>
                                             </thead>
@@ -75,8 +75,24 @@ if ($apiClient->login()) {
                                             <tbody class="nftmax-table__body">
                                                 <?php
                                                 $datajson = json_decode($gcdata);
-                                                foreach ($datajson as $productscatalgo => $productdetails) {
-                                                    $material = $apiClient->getProduct($productdetails->id);
+                                                foreach ($datajson as $productdetails) {
+                                                    // var_dump($productdetails);
+                                                    // var_dump($datajson);
+                                                    // echo $productdetails->nombre;
+
+                                                    // echo $productdetails->precioVenta;
+                                                    // echo $productdetails->cantidadDisponible;
+                                                    // echo $productdetails->imagen;
+                                                    // echo $productdetails->id;
+                                                    // echo $productdetails->descripcion;
+                                                    // echo $productdetails->categoria;
+                                                    // echo $productdetails->subcategoria;
+                                                    // echo $productdetails->fechaCreacion;
+                                                    // echo $productdetails->fechaActualizacion;
+                                                    // echo $productdetails->estado;
+                                                    // echo $productdetails->usuarioCreacion;
+                                                    // echo $productdetails->usuarioActualizacion
+                                                    // var_dump($datajson);
 
 
                                                 ?>
@@ -94,7 +110,7 @@ if ($apiClient->login()) {
 
                                                                 <div class="nftmax-table__product-content">
                                                                     <h4 class="nftmax-table__product-title">
-                                                                        <?php echo ($productdetails->noParte); ?>
+                                                                        <?php echo $productdetails->noParte;; ?>
                                                                     </h4>
 
                                                                 </div>
@@ -105,7 +121,7 @@ if ($apiClient->login()) {
 
                                                                 <div class="nftmax-table__product-content">
                                                                     <h4 class="nftmax-table__product-title">
-                                                                        <?php echo json_decode($material)->material; ?>
+                                                                        <?php echo $productdetails->marca;; ?>
                                                                     </h4>
 
                                                                 </div>
@@ -115,23 +131,27 @@ if ($apiClient->login()) {
                                                         <td class="nftmax-table__column-3 nftmax-table__data-3">
                                                             <div class="nftmax-table__amount nftmax-table__text-two">
                                                                 <img src="img/usd-icon.png" alt="#"><span
-                                                                    class="nftmax-table__text"><?php echo ($productdetails->precioVenta); ?></span>
+                                                                    class="nftmax-table__text"><?php echo $productdetails->precioVenta; ?></span>
                                                             </div>
                                                         </td>
 
                                                         <td class="nftmax-table__column-3 nftmax-table__data-4">
                                                             <div class="nftmax-table__amount nftmax-table__text-two">
                                                                 <span
-                                                                    class="nftmax-table__text"><?php echo ($productdetails->cantidadDisponible); ?></span>
+                                                                    class="nftmax-table__text"><?php echo $productdetails->cantidadDisponible; ?></span>
                                                             </div>
                                                         </td>
 
                                                         <td class="nftmax-table__column-6 nftmax-table__data-5">
-                                                            <p class="nftmax-table__text nftmax-table__time">2 Hours 1 min
-                                                                30s</p>
+                                                            <p class="nftmax-table__text nftmax-table__time">
+                                                                <?php echo $productdetails->id; ?></p>
                                                         </td>
                                                         <td class="nftmax-table__column-7 nftmax-table__data-7">
-                                                            <div class="nftmax-table__status nftmax-sbcolor">Active</div>
+                                                            <div class="nftmax-table__status nftmax-sbcolor sync"
+                                                                style="cursor: pointer;"
+                                                                data-id="<?php echo $productdetails->noParte; ?>">
+                                                                Sincronizar
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>

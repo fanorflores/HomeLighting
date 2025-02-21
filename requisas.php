@@ -1,11 +1,12 @@
 <?php
 require_once("class/app/views/header_template.php");
-require_once("class/HL/orders.php");
+require_once("class/GC/requisas.php");
+
+$requisas = new RequisasGC();
 
 
-$prod = new OrdersHL();
 
-$ordersdata = $prod->orders();
+
 
 
 
@@ -49,111 +50,15 @@ $ordersdata = $prod->orders();
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="table_1" role="tabpanel"
-                                        aria-labelledby="table_1">
-                                        <!-- NFTMax Table -->
-                                        <table id="nftmax-table__main" class="nftmax-table__main nftmax-table__main-v1">
-                                            <!-- NFTMax Table Head -->
-                                            <thead class="nftmax-table__head">
-                                                <tr>
-                                                    <th class="nftmax-table__column-1 nftmax-table__h1">Imagen
-                                                    </th>
-                                                    <th class="nftmax-table__column-1 nftmax-table__h2">SKU
-                                                    </th>
-                                                    <th class="nftmax-table__column-2 nftmax-table__h4">Producto</th>
-                                                    <th class="nftmax-table__column-2 nftmax-table__h5">precio</th>
-                                                    <th class="nftmax-table__column-2 nftmax-table__h6">Stock</th>
+                                <div>
+                                    <?php
+                                    echo "<pre>";
+                                    var_dump($requisas->createRequest("t_7d7d078c7f811a6d8a8154947601b4"));
+                                    echo "</pre>";
 
-                                                    <th class="nftmax-table__column-6 nftmax-table__h7">Actualizado</th>
-                                                    <th class="nftmax-table__column-7 nftmax-table__h8">Estado </th>
-                                                </tr>
-                                            </thead>
-                                            <!-- NFTMax Table Body -->
-                                            <tbody class="nftmax-table__body">
-                                                <?php
-
-                                                echo "<pre>";
-                                                var_dump($ordersdata);
-                                                echo "</pre>";
-
-
-
-
-                                                ?>
-                                                <tr>
-                                                    <td class="nftmax-table__column-1 nftmax-table__data-1">
-                                                        <div class="nftmax-table__product">
-                                                            <div class="nftmax-table__product-img">
-
-                                                                <img src="<?php echo (($productdetails->images)[0]->src); ?>"
-                                                                    alt="#">
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="nftmax-table__column-3 nftmax-table__data-4">
-                                                        <div class="nftmax-table__amount nftmax-table__text-two">
-                                                            <span class="nftmax-table__text">
-                                                                <?php echo $ordersdetails->hash; ?>
-
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="nftmax-table__column-1 nftmax-table__data-2">
-                                                        <div class="nftmax-table__product">
-
-                                                            <div class="nftmax-table__product-content">
-                                                                <h4 class="nftmax-table__product-title">
-                                                                    <?php echo $productdetails->name; ?>
-                                                                </h4>
-
-                                                            </div>
-                                                        </div>
-                                                    </td>
-
-                                                    <td class="nftmax-table__column-3 nftmax-table__data-3">
-                                                        <div class="nftmax-table__amount nftmax-table__text-two">
-                                                            <img src="img/usd-icon.png" alt="#"><span
-                                                                class="nftmax-table__text">
-                                                                <?php echo round(($productdetails->price) * 1.15, 2); ?>
-                                                            </span>
-                                                        </div>
-                                                    </td>
-
-
-
-                                                    <td class="nftmax-table__column-3 nftmax-table__data-4">
-                                                        <div class="nftmax-table__amount nftmax-table__text-two">
-                                                            <span class="nftmax-table__text">
-                                                                <?php echo $productdetails->stock_quantity; ?>
-
-                                                            </span>
-                                                        </div>
-                                                    </td>
-
-                                                    <td class="nftmax-table__column-6 nftmax-table__data-5">
-                                                        <p class="nftmax-table__text nftmax-table__time">2 Hours 1 min
-                                                            30s</p>
-                                                    </td>
-                                                    <td class="nftmax-table__column-7 nftmax-table__data-7">
-                                                        <div class="nftmax-table__status nftmax-sbcolor sync"
-                                                            style="cursor: pointer;"
-                                                            data-id="<?php echo $productdetails->sku; ?>"> Sincronizar
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <?php //}
-                                                ?>
-
-
-
-                                            </tbody>
-                                            <!-- End NFTMax Table Body -->
-                                        </table>
-                                        <!-- End NFTMax Table -->
-                                    </div>
-
+                                    ?>
                                 </div>
+
                             </div>
                         </div>
 

@@ -10,7 +10,7 @@ class ApiClient
     public function __construct()
     {
         //, , 
-        $this->baseUrl = 'http://apidev.grupocubas.com:9001';
+        $this->baseUrl = 'http://apidev.grupocubas.com:9000';
         $this->username = 'home.lighting';
         $this->password = 'pJNh9n5Deo1';
         $this->cookieFile = __DIR__ . '/cookies.txt';
