@@ -1,6 +1,6 @@
 <?php
-require($_SERVER['SERVER_NAME'] . "/class/HL/conection.php");
-require_once($_SERVER['SERVER_NAME'] . "/class/LOCAL/conection.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/class/HL/conection.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/class/LOCAL/conection.php");
 class OrdersHL
 {
     public function getOorder($cart_key)

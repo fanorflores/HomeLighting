@@ -2,7 +2,7 @@
 require_once("class/app/views/header_template.php");
 require_once("class/HL/products.php");
 
-$apiClient = new ProductsHL();
+//$apiClient = new ProductsHL();
 
 $prod = new ProductsHL();
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
